@@ -1,0 +1,106 @@
+body {
+padding: 0;
+margin: 0;
+background-color: black;
+}
+
+#logo {
+padding: 14px 16px;
+}
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: black;
+}
+
+li {
+float: left;
+}
+
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+li a:hover:not(.active) {
+background-color: white;
+color: black;
+}
+
+ul li ul {
+visibility: hidden;
+opacity: 0;
+transition: all 0.5s ease;
+margin-top: 1rem;
+left: 0;
+display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+visibility: visible;
+opacity: 1;
+display: block;
+}
+
+ul li ul li {
+clear: both;
+width: 100%;
+}
+
+header {
+background-image: url("band.jpg");
+background-position: center;
+background-size: cover;
+height: 1000px;
+width: 100%;
+z-index: 0;
+}
+
+#band-name {
+position: absolute;
+margin-top: 50%;
+margin-left: 26%;
+width: 100%;
+color: white;
+width: 50%;
+height: 50%;
+}
+
+.about-band {
+background-color: white;
+padding-top: 150px;
+padding-bottom: 200px;
+width: 100%;
+text-align: center;
+font-size: 24px;
+}
+
+#about-band-p {
+padding-left: 20%;
+padding-right: 20%;
+}
+
+.best-album {
+background-color: black;
+padding-top: 150px;
+padding-bottom: 200px;
+width: 100%;
+text-align: center;
+font-size: 18px;
+color: white;
+}
+
+footer {
+padding-top: 50px;
+padding-bottom: 50px;
+width: 100%;
+text-align: center;
+background-color: #f1f1f1!important;
+}
