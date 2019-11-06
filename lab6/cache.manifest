@@ -1,0 +1,10 @@
+CACHE MANIFEST
+
+CACHE:
+error.html
+
+index.html
+index.css
+
+FALLBACK:
+/ /error.html

@@ -1,0 +1,32 @@
+
+
+#title {
+    margin-top: 20px;
+}
+
+#googleMap {
+    margin-top: 20px;
+}
+
+.detail {
+    margin-top: 20px;
+}
+
+.buy_ticket {
+    border: 1px solid red;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    margin-top: 20px;
+    animation-name: appearing;
+    animation-iteration-count: infinite;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate-reverse;
+}
+
+
+@keyframes appearing {
+    0% {opacity: 1;}
+    100% {opacity: 0.8;}
+  }

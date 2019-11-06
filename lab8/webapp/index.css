@@ -1,0 +1,99 @@
+.navbar-brand {
+  background-image: url("logo.png");
+  background-position: center;
+  background-size: cover;
+  font-style: italic;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 20px;
+}
+
+#desktop {
+  background-color: black;
+}
+
+#mobile {
+  background-color: black;
+}
+
+/*
+@include media-breakpoint-up(sm) { ... }
+@include media-breakpoint-up(md) { ... }
+@include media-breakpoint-up(lg) { ... }
+@include media-breakpoint-up(xl) { ... }
+*/
+
+@media (max-width: 767px) { 
+  #desktop {
+    display: none;
+  }
+  #mobile {
+    display: block;
+  }
+}
+
+@media (min-width: 767px) {
+  #mobile {
+    display: none;
+  }
+  #desktop {
+    display: block;
+  }
+}
+
+.mobile-menu-links {
+  color: white;
+}
+
+.mobile-menu-links:hover {
+  color: rgb(179, 174, 174);
+}
+
+header {
+  color: white;
+  width: 100%;
+  min-height: 500px;
+  background-image: url("band.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.jumbotron {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+header h1 {
+  margin-top: 50%;
+}
+
+/** not needed, but we must remember
+.about {
+  
+}
+*/
+
+.about h2 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.about p {
+  font-size: 14px;
+}
+
+.album {
+  margin-top: 10%;
+}
+
+.album h2 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.album p {
+  font-size: 14px;
+}
+
+footer {
+  margin-top: 10%;
+}

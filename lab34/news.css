@@ -1,0 +1,73 @@
+
+
+header {
+    color: white;
+    min-height: 500px;
+    background-image: url("kansas_band_members_2016.jpg");
+    background-position-y: 50;
+    background-size: cover;
+  }
+  
+.row {
+    margin: 10%;
+}
+
+.col-sm-4 {
+    padding: 20px;
+}
+
+.card {
+    width: 321px;
+    background-color: black;
+}
+
+.image_news {
+    width: 320px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.image_news:hover {
+    animation-name: appearing;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate-reverse;
+}
+
+.title {
+    margin-top: 10px;
+    width: 320px;
+    color: white;
+    text-align: center;
+    font-family: "Times New Roman";
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.subtitle {
+    width: 320px;
+    color: white;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+    font-family: 'Times New Roman';
+    font-size: 12px;
+}
+
+/* Standard syntax */
+  @keyframes appearing {
+    0% {opacity: 1;}
+    100% {opacity: 0.8;}
+  }
+
+  @keyframes logo-appearing {
+    0% {opacity: 0.1;}
+    100% {opacity: 0.9;}
+  }
+
+  @keyframes slideDown {
+    0% {opacity: 0;
+        margin-top: -10px;}
+    100% {opacity: 0.9;
+        margin-top: 100px;}
+  }

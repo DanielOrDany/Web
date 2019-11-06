@@ -1,0 +1,85 @@
+
+
+
+.add_image {
+    display: flex;
+}
+
+.add_image_btn {
+    margin-top: 10px;
+    height: 40px;
+    min-width: 100px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+}
+
+.looks_like_image {
+    margin-left: 10%;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 400px;
+    max-height: 400px;
+    background-color: cadetblue;
+    border: 1px dashed white;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.add_text {
+    margin-top: 20px;
+    display: flex;
+}
+
+.add_text_btn {
+    margin-top: 5px;
+    height: 40px;
+    min-width: 100px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+}
+
+.inputs {
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.add_title {
+   
+}
+
+.add_body {
+    margin-top: 10px;
+
+}
+
+.add_image_btn:hover {
+    animation-name: appearing;
+    animation-iteration-count: infinite;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate-reverse;
+}
+
+.add_text_btn:hover {
+    animation-name: appearing;
+    animation-iteration-count: infinite;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate-reverse;
+}
+
+
+@keyframes appearing {
+0% {opacity: 1;}
+100% {opacity: 0.8;}
+}

@@ -1,0 +1,30 @@
+
+.venue {
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 10px solid white;
+    background-color: black;
+}
+
+tr {
+    color: white;
+}
+
+td {
+    height: 50px;
+    vertical-align: center;
+}
+
+td:hover {
+    animation-name: appearing;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes appearing {
+    0% {opacity: 1;}
+    100% {opacity: 0.8;}
+  }

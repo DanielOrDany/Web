@@ -1,0 +1,13 @@
+CACHE MANIFEST
+
+CACHE:
+error.html
+
+index.html
+index.css
+
+fans_appeal.html
+fans_appeal.css
+
+FALLBACK:
+/ /error.html
