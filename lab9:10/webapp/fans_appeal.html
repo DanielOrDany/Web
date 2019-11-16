@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.manifest">
+<head>
+  <title>Kansas band</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="fans_appeal.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="jquery.min.js">
+    <link rel="stylesheet" href="popper.min.js">
+    <link rel="stylesheet" href="bootstrap.min.js">
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+    <script src="moment.js"></script>
+    <div id="desktop">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="d-flex w-20 order-0">
+                <a class="navbar-brand mr-1" href="index.html">  </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse justify-content-center order-2" id="collapsingNavbar">
+                <ul class="navbar-nav">
+                    <li  class="nav-item">
+                        <a class="nav-link" href="index.html">HOME</a></li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="news.html">NEWS</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">FOR FANS</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">FAN CLUB</a>
+                            <a class="dropdown-item" href="tour_schedule.html">TOUR SCHEDULE</a>
+                            <a class="dropdown-item" href="#">LYRICS</a>
+                        </div>
+                    </li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="fans_appeal.html">FANS APPEAL</a></li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="concert_venue.html">CONCERT VENUE</a></li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="admin.html">ADMIN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <div id="mobile">
+        <div class="pos-f-t">
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                    <h3 class="mobile-menu-links"># <a href="index.html">HOME</a></h3>
+                    <h3 class="mobile-menu-links"># <a href="news.html">NEWS</a></h3>
+                    <br>
+                    <h3 class="mobile-menu-links">FOR FANS</h3>
+                    <hr style="background-color: white">
+                    <h3 class="mobile-menu-links">#<a href="#">FAN CLUB</a></h3>
+                    <h3 class="mobile-menu-links">#<a href="tour_schedule.html">TOUR SCHEDULE</a></h3>
+                    <h3 class="mobile-menu-links">#<a href="#">LYRICS</a></h3>
+                    <br>
+                    <h3 class="mobile-menu-links">#<a href="fans_appeal.html">FANS APPEAL</a></h3>
+                    <h3 class="mobile-menu-links">#<a href="concert_venue.html">CONCERT VENUE</a></h3>
+                    <h3 class="mobile-menu-links">#<a href="admin.html">ADMIN</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<header class="jumbotron text-center img-fluid col-12" style="margin-bottom:0">
+    <h1>Fans appeal</h1>
+</header>
+
+<content>
+    <div class="container" id="container" style="margin-top:30px">
+        <hr/>
+        <div class="comment">
+           <div class="head">
+                <p class="full_name">David Richment</p>
+                <p class="time">10:22</p>
+                <p class="date">2019/10/19</p>
+           </div>
+           <div class="body">
+                My best rock group for ages, thanks you KANSAS!!
+           </div>
+        </div>
+
+        <hr/>
+        <div class="comment">
+           <div class="head">
+                <p class="full_name">Roman Rudyj</p>
+                <p class="time">12:01</p>
+                <p class="date">2019/11/21</p>
+           </div>
+           <div class="body">
+                Pl, contain! You all are great, i hope in you!
+           </div>
+        </div>
+    </div>
+    <div class="add_comment">
+        <textarea id="author" class="add-comment-author"></textarea>
+        <button id="addComment" class="send-btn">send</button>
+        <textarea id="commentBody" class="add-comment-body"></textarea>
+    </div>
+    <script>
+
+        // In the following line, you should include the prefixes of implementations you want to test.
+        window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        // DON'T use "var indexedDB = ..." if you're not in a function.
+        // Moreover, you may need references to some window.IDB* objects:
+        window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction || {READ_WRITE: "readwrite"}; // This line should only be needed if it is needed to support the object's constants for older browsers
+        window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+        // (Mozilla has never prefixed these objects, so we don't need window.mozIDB*)
+
+        var indexedDBorLocalStorage = 'indexed';
+
+        if (indexedDBorLocalStorage === 'indexed'){
+            if (!window.indexedDB) {
+                console.log("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.");
+            }
+
+            const dbName = "comment";
+
+            var request = indexedDB.open(dbName, 4);
+
+            request.onerror = function (event) {
+                // Do something with request.errorCode!
+                console.log("db is not openned")
+            };
+
+            // This event is only implemented in recent browsers
+            request.onupgradeneeded = function (event) {
+                var db = event.target.result;
+
+                // Create an objectStore to hold information about our customers. We're
+                // going to use "ssn" as our key path because it's guaranteed to be
+                // unique - or at least that's what I was told during the kickoff meeting.
+                var objectStore = db.createObjectStore("comments", {autoIncrement: true});
+
+                // Create an index to search customers by name. We may have duplicates
+                // so we can't use a unique index.
+                objectStore.createIndex("author", "author", {unique: false});
+                objectStore.createIndex("comment", "comment", {unique: false});
+                objectStore.createIndex("date", "date", {unique: false});
+                objectStore.createIndex("time", "time", {unique: false});
+            };
+        }
+
+        function isOnline() {return window.navigator.onLine;}
+
+        function trimfield(str)
+        {
+            return str.replace(/^\s+|\s+$/g,'');
+        }
+
+        function saveLocalCommentToServer() {
+            if (indexedDBorLocalStorage === 'indexed'){
+                var db;
+                var request = indexedDB.open('comment', 4);
+                request.onsuccess = function() {
+                    db = request.result;
+
+                    var transaction = db.transaction('comments', 'readwrite');
+                    var objectStore = transaction.objectStore('comments');
+
+                    if ('getAll' in objectStore) {
+                        // IDBObjectStore.getAll() will return the full set of items in our store.
+                        objectStore.getAll().onsuccess = function(event) {
+                            let array = event.target.result;
+                            for (var x = 0; x < array.length; x++){
+                                var data = {};
+                                var commentAuthor = array[x]['author'];
+                                var commentBody = array[x]['comment'];
+                                var commentDate = array[x]['date'];
+                                var commentTime = array[x]['time'];
+
+                                data.author = commentAuthor;
+                                data.comment  = commentBody;
+                                data.date  = commentDate;
+                                data.time  = commentTime;
+
+                                var json = JSON.stringify(data);
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("POST", "http://localhost:3000/v1/comment");
+                                xhr.setRequestHeader('Content-type','application/json');
+                                xhr.send(json);
+                            }
+                        };
+                        objectStore.clear();
+                    } else {
+                        // Fallback to the traditional cursor approach if getAll isn't supported.
+                        console.log("db is empty");
+                    }
+                };
+
+            } else {
+                if (localStorage.getItem('comments') !== null)
+                {
+                    var array = JSON.parse(localStorage.getItem('comments'));
+
+                    for (var x = 0; x < array.length; x++){
+                        var data = {};
+                        var commentAuthor = array[x][0];
+                        var commentBody = array[x][1];
+                        var commentDate = array[x][2];
+                        var commentTime = array[x][3];
+
+                        data.author = commentAuthor;
+                        data.comment  = commentBody;
+                        data.date  = commentDate;
+                        data.time  = commentTime;
+
+                        var json = JSON.stringify(data);
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "http://localhost:3000/v1/comment");
+                        xhr.setRequestHeader('Content-type','application/json');
+                        xhr.send(json);
+                    }
+                    localStorage.removeItem('comments');
+                }
+            }
+        }
+
+        if(isOnline() === true)
+        {
+            saveLocalCommentToServer();
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("Get",  "http://localhost:3000/v1/comments");
+            xhr.setRequestHeader('Content-type','application/json');
+            xhr.onload  = function() {
+                var array = eval("[" + xhr.response + "]");
+                for (var x = 0; x < array[0].length; x++){
+                    var commentAuthor = array[0][x][0];
+                    var commentBody = array[0][x][1];
+                    var commentDate = array[0][x][2];
+                    var commentTime = array[0][x][3];
+                    const div = document.createElement('div');
+                    div.innerHTML = `
+
+                       <hr/>
+                        <div class="comment">
+                           <div class="head">
+                                <p class="full_name">`+ commentAuthor +`</p>
+                                <p class="time">`+ commentTime +`</p>
+                                <p class="date">`+ commentDate +`</p>
+                           </div>
+                           <div class="body">`+ commentBody +`</div>
+                        </div>
+
+                `;
+                    document.getElementById('container').appendChild(div);
+                }
+
+            };
+            xhr.send();
+        }
+
+
+        //Add new comment
+        document.getElementById('addComment').onclick = function() {
+            //isOnline();
+            var author = document.getElementById('author');
+            var comment = document.getElementById('commentBody');
+
+            if (trimfield(author.value).length > 0 && trimfield(comment.value).length > 0) {
+
+                if (isOnline() === false)
+                {
+                    var a = author.value;
+                    var c = comment.value;
+                    if (indexedDBorLocalStorage === 'indexed') {
+                        // Let us open our database
+                        var DBOpenRequest = window.indexedDB.open("comment", 4);
+
+                        DBOpenRequest.onsuccess = function(event) {
+                            // store the result of opening the database in the db variable.
+                            // This is used a lot below
+                            db = DBOpenRequest.result;
+
+                            // Run the addData() function to add the data to the database
+                            addData();
+                        };
+
+                        function addData() {
+                            // Create a new object ready to insert into the IDB
+                            var newItem = [ { author: a, comment: c, date: moment().format('L'), time: moment().format('LT')} ];
+
+                            // open a read/write db transaction, ready for adding the data
+                            var transaction = db.transaction(["comments"], "readwrite");
+
+                            // report on the success of the transaction completing, when everything is done
+                            transaction.oncomplete = function(event) {
+                                console.log("Transaction completed");
+                            };
+
+                            transaction.onerror = function(event) {
+                                console.log("Transaction not opened due to error. Duplicate items not allowed");
+                            };
+
+                            // create an object store on the transaction
+                            var objectStore = transaction.objectStore("comments");
+
+                            // Make a request to add our newItem object to the object store
+                            var objectStoreRequest = objectStore.add(newItem[0]);
+
+                            objectStoreRequest.onsuccess = function(event) {
+                                // report the success of our request
+                                console.log("Request successful");
+                            };
+                        };
+
+                        const div = document.createElement('div');
+                        div.innerHTML = `
+
+                       <hr/>
+                        <div class="comment">
+                           <div class="head">
+                                <p class="full_name">` + author.value + `</p>
+                                <p class="time">` + moment().format('LT') + `</p>
+                                <p class="date">` + moment().format('L') + `</p>
+                           </div>
+                           <div class="body">` + comment.value + `</div>
+                        </div>
+
+                        `;
+
+                        document.getElementById('container').appendChild(div);
+
+                    } else {
+                        if (localStorage.getItem('comments') === null) {
+                            var array = [author.value, comment.value, moment().format('L'), moment().format('LT')];
+                            localStorage.setItem('comments', JSON.stringify([array]));
+                            const div = document.createElement('div');
+                            div.innerHTML = `
+
+                               <hr/>
+                                <div class="comment">
+                                   <div class="head">
+                                        <p class="full_name">` + author.value + `</p>
+                                        <p class="time">` + moment().format('LT') + `</p>
+                                        <p class="date">` + moment().format('L') + `</p>
+                                   </div>
+                                   <div class="body">` + comment.value + `</div>
+                                </div>
+
+                            `;
+                            document.getElementById('container').appendChild(div);
+
+                        } else {
+                            var array = JSON.parse(localStorage.getItem('comments'));
+                            array.push([author.value, comment.value, moment().format('L'), moment().format('LT')]);
+                            localStorage.setItem('comments', JSON.stringify(array));
+                            const div = document.createElement('div');
+                            div.innerHTML = `
+
+                               <hr/>
+                                <div class="comment">
+                                   <div class="head">
+                                        <p class="full_name">` + author.value + `</p>
+                                        <p class="time">` + comment.value + `</p>
+                                        <p class="date">` + moment().format('L') + `</p>
+                                   </div>
+                                   <div class="body">` + moment().format('LT') + `</div>
+                                </div>
+
+                            `;
+                            document.getElementById('container').appendChild(div);
+                        }
+                    }
+                }
+
+                if (isOnline() === true)
+                {
+                    var data = {};
+                    data.author = author.value;
+                    data.comment = comment.value;
+                    data.date = moment().format('L');
+                    data.time = moment().format('LT');
+                    var json = JSON.stringify(data);
+                    xhr.open("POST", "http://localhost:3000/v1/comment");
+                    xhr.setRequestHeader('Content-type', 'application/json');
+                    xhr.send(json);
+
+                    if (localStorage.getItem('comments') !== null) {
+                        const div = document.createElement('div');
+                        div.innerHTML = `
+
+                       <hr/>
+                        <div class="comment">
+                           <div class="head">
+                                <p class="full_name">` + author.value + `</p>
+                                <p class="time">` + comment.value + `</p>
+                                <p class="date">` + moment().format('L') + `</p>
+                           </div>
+                           <div class="body">` + moment().format('LT') + `</div>
+                        </div>
+
+                    `;
+                        document.getElementById('container').appendChild(div);
+                    }
+
+                    saveLocalCommentToServer();
+                    location.reload();
+                }
+
+                //Set default
+                author.value = "";
+                comment.value = "";
+            } else {
+                alert("Pl, add all info");
+            }
+        }
+
+    </script>
+</content>
+
+<footer class="jumbotron text-center" style="margin-bottom:0">
+        <p><img alt="facebook" src="facebook.jpg" width="10px" height="10px"> Powered by <a href="https://www.facebook.com/nikulshyn.daniel">Daniel Nikulshyn</a></p>
+</footer>
+
+</body>
+</html>
