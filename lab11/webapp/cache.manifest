@@ -1,0 +1,23 @@
+CACHE MANIFEST
+
+CACHE:
+error.html
+
+news.html
+news.css
+
+index.html
+index.css
+
+fans_appeal.html
+fans_appeal.css
+
+bootstrap.min.css
+bootstrap.min.js
+
+jquery.min.js
+moment.js
+popper.min.js
+
+FALLBACK:
+/ /error.html

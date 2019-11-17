@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.manifest">
+<head>
+  <title>Kansas band</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="news.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="jquery.min.js">
+    <link rel="stylesheet" href="popper.min.js">
+    <link rel="stylesheet" href="bootstrap.min.js">
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+
+    <div id="desktop">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="d-flex w-20 order-0">
+                <a class="navbar-brand mr-1" href="index.html">  </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse justify-content-center order-2" id="collapsingNavbar">
+                <ul class="navbar-nav">
+                    <li  class="nav-item">
+                        <a class="nav-link" href="index.html">HOME</a></li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="news.html">NEWS</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">FOR FANS</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">FAN CLUB</a>
+                            <a class="dropdown-item" href="tour_schedule.html">TOUR SCHEDULE</a>
+                            <a class="dropdown-item" href="#">LYRICS</a>
+                        </div>
+                    </li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="fans_appeal.html">FANS APPEAL</a></li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="concert_venue.html">CONCERT VENUE</a></li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="admin.html">ADMIN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <div id="mobile">
+        <div class="pos-f-t">
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                    <h3 class="mobile-menu-links"># <a href="index.html">HOME</a></h3>
+                    <h3 class="mobile-menu-links"># <a href="news.html">NEWS</a></h3>
+                    <br>
+                    <h3 class="mobile-menu-links">FOR FANS</h3>
+                    <hr style="background-color: white">
+                    <h3 class="mobile-menu-links">#<a href="#">FAN CLUB</a></h3>
+                    <h3 class="mobile-menu-links">#<a href="tour_schedule.html">TOUR SCHEDULE</a></h3>
+                    <h3 class="mobile-menu-links">#<a href="#">LYRICS</a></h3>
+                    <br>
+                    <h3 class="mobile-menu-links">#<a href="fans_appeal.html">FANS APPEAL</a></h3>
+                    <h3 class="mobile-menu-links">#<a href="concert_venue.html">CONCERT VENUE</a></h3>
+                    <h3 class="mobile-menu-links">#<a href="admin.html">ADMIN</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<header class="jumbotron text-center img-fluid col-12" style="margin-bottom:0">
+    <h1>Kansas news</h1>
+</header>
+
+<content id="news-content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img class="image_news" alt="kansas member" src="kansas_member.jpg">
+                <h3 class="title">Kansas memeber or Tony Stark?</h3>
+                <p class="subtitle">Tony is a greate singer in 2019 and one of the best player in 2018. As a rool..</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="image_news" alt="kansas member" src="kansas_member2.jpg">
+                <h3 class="title">People have to listen him misic</h3>
+                <p class="subtitle">Kansas member, David have a dream..</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="image_news" alt="kansas member" src="kansas_member3.jpg">
+                <h3 class="title">Omg, how?</h3>
+                <p class="subtitle">Best of best singer in this f*cking planet..</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img class="image_news" alt="kansas member" src="kansas_members.jpg">
+                <h3 class="title">Wow, band is together again</h3>
+                <p class="subtitle">Today, kansas selebrate their 40-years together as a band..</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="image_news" alt="kansas member" src="kansas_members2.jpg">
+                <h3 class="title">Fans was shocked!?</h3>
+                <p class="subtitle">Kansas decided to play thier hits between current people at the footboll match..</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img class="image_news" alt="kansas member" src="patron.jpg">
+                <h3 class="title">Fans show</h3>
+                <p class="subtitle">What if your fans try to sign your music?</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="addedNews"></div>
+    <script>
+
+        var indexedDBorLocalStorage = 'indexed';
+        function isOnline() {return window.navigator.onLine;}
+
+        if(isOnline() === false)
+        {
+            if (indexedDBorLocalStorage === 'indexed') {
+                var db;
+                var request = indexedDB.open('new', 4);
+                request.onsuccess = function() {
+                    db = request.result;
+
+                    var transaction = db.transaction('news', 'readwrite');
+                    var objectStore = transaction.objectStore('news');
+
+                    if ('getAll' in objectStore) {
+                        // IDBObjectStore.getAll() will return the full set of items in our store.
+                        objectStore.getAll().onsuccess = function(event) {
+                            let array = event.target.result;
+                            for (var x = 0; x < array.length; x++){
+                                var title = array[x]['title'];
+                                var subtitle = array[x]['subtitle'];
+
+                                const div = document.createElement('div');
+                                div.className = "col-md-4";
+                                div.innerHTML = `
+
+                                    <div class="card" id="d">
+                                        <img class="image_news" alt="kansas member" src="kansas_members2.jpg">
+                                        <h3 class="title">`+title+`</h3>
+                                        <p class="subtitle">`+subtitle+`</p>
+                                    </div>
+
+                                `;
+                                document.getElementById('addedNews').appendChild(div);
+                            }
+                        };
+                        objectStore.clear();
+                    } else {
+                        // Fallback to the traditional cursor approach if getAll isn't supported.
+                        console.log("db is empty");
+                    }
+                };
+
+            } else {
+                if (localStorage.getItem('news') !== null){
+                    var array = JSON.parse(localStorage.getItem('news'));
+                    for (var x = 0; x < array.length; x++){
+                        var title = array[x][0];
+                        var subtitle = array[x][1];
+                        const div = document.createElement('div');
+                        div.className = "col-md-4";
+                        div.innerHTML = `
+
+                            <div class="card">
+                                <img class="image_news" alt="kansas member" src="kansas_members2.jpg">
+                                <h3 class="title">`+title+`</h3>
+                                <p class="subtitle">`+subtitle+`</p>
+                            </div>
+
+                        `;
+                        document.getElementById('addedNews').appendChild(div);
+                    }
+                }
+            }
+        }
+
+        else
+        {
+            var xhr = new XMLHttpRequest();
+            xhr.open("Get",  "http://localhost:3000/v1/new");
+            xhr.setRequestHeader('Content-type','application/json');
+            xhr.onload  = function() {
+                var array = eval("[" + xhr.response + "]");
+                for (var x = 0; x < array[0].length; x++){
+                    var title = array[0][x][0];
+                    var subtitle = array[0][x][1];
+                    const div = document.createElement('div');
+                    div.className = "col-md-4";
+                    div.innerHTML = `
+
+                            <div class="card">
+                                <img class="image_news" alt="kansas member" src="kansas_members2.jpg">
+                                <h3 class="title">`+title+`</h3>
+                                <p class="subtitle">`+subtitle+`</p>
+                            </div>
+
+                  `;
+                    document.getElementById('addedNews').appendChild(div);
+                }
+
+            };
+            xhr.send();
+        }
+    </script>
+</content>
+
+<footer class="jumbotron text-center" style="margin-bottom:0">
+        <p><img alt="facebook" src="facebook.jpg" width="10px" height="10px"> Powered by <a href="https://www.facebook.com/nikulshyn.daniel">Daniel Nikulshyn</a></p>
+</footer>
+
+</body>

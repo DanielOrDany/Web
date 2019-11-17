@@ -1,0 +1,14 @@
+{
+  "name": "kansas",
+  "version": "1.0.0",
+  "description": "rock group",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "nikulshyn danylo",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mongodb": "^3.3.4"
+  }
+}
